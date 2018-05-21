@@ -19,11 +19,11 @@ module.exports.run = async (bot, message, args) =>{
         }
         if(args[0].toLowerCase() == "create"){
             if(channel) return message.channel.send(`${message.member}, you already have a forum channel that you have not finished creating.`).then(msg => {msg.delete(5000)});
-            message.guild.createChannel(`forum-${message.member.id}`, "text")
+            message.guild.createChannel(`forum-${message.author.id}`, "text")
                 .then(c =>{
                     c.setParent("447881423072788500");
                 }).catch(console.error);
-                let newchannel = message.guild.channels.find("name",`forum-${message.member.id}`);
+                let newchannel = message.guild.channels.find("name",`forum-${message.author.id}`);
                 message.channel.send(`${message.author}, your new forum channel is ${newchannel}`).then(msg => {
                   msg.delete(10000);
                 //newchannel.send(`${message.author}, what do you want the name of your forum to be?`);
