@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) =>{
                 .then(c =>{
                     c.setParent("447881423072788500");
                 }).catch(console.error);
-                let newchannel = message.guild.channels.find(`name`,`forum-${message.member.id}`);
+                let newchannel = message.guild.channels.find("name",`forum-${message.member.id}`);
                 message.channel.send(`${message.author}, your new forum channel is ${newchannel}`).then(msg => {
                   msg.delete(10000);
                 //newchannel.send(`${message.author}, what do you want the name of your forum to be?`);
