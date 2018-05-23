@@ -83,7 +83,7 @@ bot.on("message", async message => {
         let embed = new Discord.RichEmbed()
         .setColor("#f44242")
         .setTitle("Mention")
-        .setDescription(`${member}, ThisLightMan does not want to be mentioned at the moment`)
+        .setDescription(`${message.member}, ThisLightMan does not want to be mentioned at the moment`)
         .setFooter(`AdvancedBot by ThisLightMan`);
         message.channel.send(embed).then(msg => {msg.delete(5000)});
         message.delete().catch(O_o=>{});
