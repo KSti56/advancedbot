@@ -18,8 +18,12 @@ module.exports.run = async (bot, message, args) =>{
             return;
         }
         if(args[0].toLowerCase() == "create"){
-            if(channel) return message.channel.send(`${message.member}, you already have a forum channel that you have not finished creating.`).then(msg => {msg.delete(5000)});
-            message.guild.createChannel(`forum-${message.author.id}`, "text")
+            if(channel) {
+                message.channel.send(`${message.member}, you already have a forum channel that you have not finished creating.`).then(msg => {msg.delete(5000)});
+                message.delete().catch(O_o=>{});
+                return;
+            }
+                message.guild.createChannel(`forum-${message.author.id}`, "text")
                 .then(c =>{
                     c.setParent("447881423072788500");
                 }).catch(console.error);

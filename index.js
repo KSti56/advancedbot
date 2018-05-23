@@ -79,6 +79,17 @@ bot.on('raw', async event => {
 bot.on("message", async message => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;
+    if(message.isMentioned(message.guild.members.get('172131900289187849'))){
+        let embed = new Discord.RichEmbed()
+        .setColor("#f44242")
+        .setTitle("Mention")
+        .setDescription(`${member}, ThisLightMan does not want to be mentioned at the moment`)
+        .setFooter(`AdvancedBot by ThisLightMan`);
+        message.channel.send(embed).then(msg => {msg.delete(5000)});
+        message.delete().catch(O_o=>{});
+        return;
+    }
+    
     let logschannel = message.guild.channels.find(`name`, `chat-logs`);
     if(!logschannel) return message.channel.send("No logs channel found! Contact an administrator!");
     logschannel.send(`[${message.createdAt}] [${message.author}] [${message.channel}]: ${message.content}`);
