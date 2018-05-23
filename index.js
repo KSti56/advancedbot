@@ -79,7 +79,7 @@ bot.on('raw', async event => {
 bot.on("message", async message => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;
-    if(message.isMemberMentioned(message.guild.members.get('172131900289187849'))){
+    if(message.isMentioned('172131900289187849')){
         let embed = new Discord.RichEmbed()
         .setColor("#f44242")
         .setTitle("Mention")
